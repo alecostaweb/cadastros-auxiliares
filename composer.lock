@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a95a29625e49d84fadacee04fcc6e02",
+    "content-hash": "ee590561304a2f87da302058c434c9b0",
     "packages": [
         {
             "name": "brick/math",
@@ -7270,6 +7270,49 @@
             "time": "2021-04-07T23:14:52+00:00"
         },
         {
+            "name": "uspdev/cadastros-auxiliares-client",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uspdev/cadastros-auxiliares-client.git",
+                "reference": "666dbf67e2321d049e557372666e36ab77aafa87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uspdev/cadastros-auxiliares-client/zipball/666dbf67e2321d049e557372666e36ab77aafa87",
+                "reference": "666dbf67e2321d049e557372666e36ab77aafa87",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "^11.0|^12.0",
+                "illuminate/http": "^11.0|^12.0",
+                "illuminate/support": "^11.0|^12.0",
+                "php": "^8.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Uspdev\\CadastrosAuxiliaresClient\\CadastrosAuxiliaresClientServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Uspdev\\CadastrosAuxiliaresClient\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Laravel client for cadastros-auxiliares webservice endpoints",
+            "support": {
+                "source": "https://github.com/uspdev/cadastros-auxiliares-client/tree/1.0.1",
+                "issues": "https://github.com/uspdev/cadastros-auxiliares-client/issues"
+            },
+            "time": "2026-03-10T18:55:55+00:00"
+        },
+        {
             "name": "uspdev/laravel-replicado",
             "version": "1.0.6",
             "source": {
@@ -10548,7 +10591,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
