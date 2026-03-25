@@ -21,7 +21,6 @@
         "laravel/sanctum": "^4.3",
         "laravel/tinker": "^2.11",
         "spatie/commonmark-highlighter": "^3.0",
-        "uspdev/cadastros-auxiliares-client": "^1.0",
         "uspdev/laravel-replicado": "^1.0",
         "uspdev/laravel-tools": "^1.5",
         "uspdev/laravel-usp-theme": "^2.8.23",
@@ -74,12 +73,6 @@
             "dont-discover": []
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/uspdev/cadastros-auxiliares-client.git"
-        }
-    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
