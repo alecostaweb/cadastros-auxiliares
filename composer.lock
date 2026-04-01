@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "97732a160ee8c5efdec77e7c7adb316c",
+    "content-hash": "1ca341a85d8b5ff7c3f4db36ce43f5d4",
     "packages": [
         {
             "name": "brick/math",
@@ -7374,20 +7374,20 @@
         },
         {
             "name": "uspdev/laravel-usp-theme",
-            "version": "2.8.25",
+            "version": "2.8.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uspdev/laravel-usp-theme.git",
-                "reference": "44b066f9b57012563852bd06e82558c5fa8cd8dc"
+                "reference": "75f09e02929d5588bd26f9ccad8f7b5300cb7162"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uspdev/laravel-usp-theme/zipball/44b066f9b57012563852bd06e82558c5fa8cd8dc",
-                "reference": "44b066f9b57012563852bd06e82558c5fa8cd8dc",
+                "url": "https://api.github.com/repos/uspdev/laravel-usp-theme/zipball/75f09e02929d5588bd26f9ccad8f7b5300cb7162",
+                "reference": "75f09e02929d5588bd26f9ccad8f7b5300cb7162",
                 "shasum": ""
             },
             "require": {
-                "uspdev/cadastros-auxiliares-client": "@dev"
+                "uspdev/cadastros-auxiliares-client": "^1.0"
             },
             "type": "library",
             "extra": {
@@ -7421,9 +7421,9 @@
             "description": "usp theme for laravel",
             "support": {
                 "issues": "https://github.com/uspdev/laravel-usp-theme/issues",
-                "source": "https://github.com/uspdev/laravel-usp-theme/tree/2.8.25"
+                "source": "https://github.com/uspdev/laravel-usp-theme/tree/2.8.27"
             },
-            "time": "2026-03-24T16:34:12+00:00"
+            "time": "2026-03-27T14:35:42+00:00"
         },
         {
             "name": "uspdev/replicado",
