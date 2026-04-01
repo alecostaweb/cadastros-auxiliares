@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiMensagemController;
 use App\Http\Controllers\ApiPosProgramaController;
+use App\Http\Controllers\ApiGraduacaoCursoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['web', 'api.password'])->get('/mensagens', [ApiMensagemController::class, 'index']);
 Route::middleware(['web', 'api.password'])->get('/pos/programas', [ApiPosProgramaController::class, 'index']);
 Route::middleware(['web', 'api.password'])->get('/pos/programas/{codcur}', [ApiPosProgramaController::class, 'show'])
+    ->whereNumber('codcur');
+Route::middleware(['web', 'api.password'])->get('/graduacao/cursos', [ApiGraduacaoCursoController::class, 'index']);
+Route::middleware(['web', 'api.password'])->get('/graduacao/cursos/{codcur}', [ApiGraduacaoCursoController::class, 'show'])
     ->whereNumber('codcur');

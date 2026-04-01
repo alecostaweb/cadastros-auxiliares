@@ -12,6 +12,11 @@ $menu = [
         'can' => 'admin',
     ],
     [
+        'text' => '<i class="fas fa-university"></i> Cursos (Graduação)',
+        'url' => 'graduacao/cursos',
+        'can' => 'admin',
+    ],
+    [
         'text' => '<i class="fas fa-question-circle"></i> Ajuda',
         'url' => 'https://github.com/uspdev/cadastros-auxiliares?tab=readme-ov-file#cadastros-auxiliares',
         'target' => '_blank',
