@@ -27,6 +27,8 @@ Centralizar dados auxiliares usados por sistemas locais, permitindo:
   - **Cursos e habilitações por departamento de ensino**
     - Motivo: há cenários em que o aluno de graduação precisa ser associado ao departamento de ensino.
     - Exemplo: somente alunos de graduação do departamento de Relações Públicas podem retirar equipamentos.
+    - Documentação dos endpoints: [docs/graduacao-cursos.md](docs/graduacao-cursos.md).
+    - Consumo recomendado nos sistemas locais via `uspdev/cadastros-auxiliares-client` (base `CADASTROS_AUXILIARES_URL`).
 
 - **Pós-Graduação**
   - **Programas**
@@ -49,11 +51,14 @@ Centralizar dados auxiliares usados por sistemas locais, permitindo:
 - `GET /api/mensagens`
 - `GET /api/pos/programas`
 - `GET /api/pos/programas/{codcur}`
+- `GET /api/graduacao/cursos`
+- `GET /api/graduacao/cursos/{codcur}`
 
 Documentação detalhada:
 
 - mensagens: [docs/mensagens.md](docs/mensagens.md)
 - programas: [docs/programas.md](docs/programas.md)
+- cursos de graduação: [docs/graduacao-cursos.md](docs/graduacao-cursos.md)
 
 ## Seeder de programas de pós-graduação
 
@@ -70,6 +75,22 @@ Comportamento do seeder:
 - define `codslg` inicial no formato `PPG-<codcur>`;
 - não duplica dados em reexecuções (`firstOrCreate`);
 - não sobrescreve `codslg` já ajustado manualmente.
+
+## Seeder de cursos de graduação
+
+Para pré-popular a tabela local `cursos_graduacao` com os dados do replicado (`Graduacao::listarCursos()`), execute:
+
+```bash
+php artisan migrate
+php artisan db:seed --class=CursoGraduacaoSeeder
+```
+
+Comportamento do seeder:
+
+- cria registros novos com `codcur`;
+- inicializa `codset` como `null` para preenchimento posterior na interface;
+- não duplica dados em reexecuções (`firstOrCreate`);
+- não sobrescreve `codset` já ajustado manualmente.
 
 ## Pontos a evoluir
 

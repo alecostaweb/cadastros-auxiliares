@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MensagemController;
 use App\Http\Controllers\ProgramaController;
+use App\Http\Controllers\CursoGraduacaoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,14 @@ Route::resource('mensagens', MensagemController::class)
 Route::resource('programas', ProgramaController::class)
     ->parameters(['programas' => 'programa'])
     ->middleware(['auth', 'can:admin']);
+
+Route::prefix('graduacao')
+    ->name('graduacao.')
+    ->middleware(['auth', 'can:admin'])
+    ->group(function () {
+        Route::resource('cursos', CursoGraduacaoController::class)
+            ->parameters(['cursos' => 'curso']);
+    });
 
 // Permite usar Gate::check('user')na view 404
 Route::fallback(function(){
