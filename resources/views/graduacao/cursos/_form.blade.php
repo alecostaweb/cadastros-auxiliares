@@ -29,18 +29,25 @@
 
 <div class="mb-3">
   <label for="codset" class="form-label">Código do setor</label>
-  <input
-    type="number"
+  @php
+    $codsetSelecionado = old('codset', $curso->codset ?? '');
+  @endphp
+  <select
     id="codset"
     name="codset"
-    class="form-control @error('codset') is-invalid @enderror"
-    value="{{ old('codset', $curso->codset ?? '') }}"
-    min="1"
+    class="form-control select2 @error('codset') is-invalid @enderror"
   >
+    <option value="">Selecione um departamento</option>
+    @foreach(($setores ?? []) as $setor)
+      <option value="{{ $setor['codset'] }}" @selected((string) $codsetSelecionado === (string) $setor['codset'])>
+        {{ $setor['codset'] }} - {{ $setor['nomset'] ?? '-' }} ({{ $setor['nomabvset'] ?? '-' }})
+      </option>
+    @endforeach
+  </select>
   @error('codset')
     <div class="invalid-feedback">{{ $message }}</div>
   @enderror
-  <div class="form-text">Departamento de ensino relacionado ao curso.</div>
+  <div class="form-text">Selecione um setor com tipo Departamento de Ensino.</div>
 </div>
 
 @if(isset($curso))

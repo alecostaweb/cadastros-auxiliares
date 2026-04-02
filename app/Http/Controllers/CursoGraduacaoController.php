@@ -29,7 +29,9 @@ class CursoGraduacaoController extends Controller
 
     public function create()
     {
-        return view('graduacao.cursos.create');
+        $setores = $this->replicadoEstrutura->listarDepartamentosDeEnsino();
+
+        return view('graduacao.cursos.create', compact('setores'));
     }
 
     public function store(StoreCursoGraduacaoRequest $request)
@@ -51,7 +53,9 @@ class CursoGraduacaoController extends Controller
 
     public function edit(CursoGraduacao $curso)
     {
-        return view('graduacao.cursos.edit', compact('curso'));
+        $setores = $this->replicadoEstrutura->listarDepartamentosDeEnsino();
+
+        return view('graduacao.cursos.edit', compact('curso', 'setores'));
     }
 
     public function update(UpdateCursoGraduacaoRequest $request, CursoGraduacao $curso)

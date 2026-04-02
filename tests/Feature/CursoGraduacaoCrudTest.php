@@ -162,6 +162,18 @@ class CursoGraduacaoCrudTest extends TestCase
             'nomabvset' => 'DS',
         ]);
 
+        $this->mock(ReplicadoEstruturaService::class, function ($mock) {
+            $mock->shouldReceive('listarDepartamentosDeEnsino')
+                ->once()
+                ->andReturn([
+                    [
+                        'codset' => 558,
+                        'nomset' => 'Departamento Sigma',
+                        'nomabvset' => 'DS',
+                    ],
+                ]);
+        });
+
         $response = $this->actingAs($admin)->get("/graduacao/cursos/{$curso->id}/edit");
 
         $response->assertOk();
