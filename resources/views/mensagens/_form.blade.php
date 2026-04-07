@@ -25,6 +25,7 @@
     rows="4"
     required
   >{{ old('conteudo', $mensagem->conteudo ?? '') }}</textarea>
+  <div class="form-text">Tags HTML permitidas: <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;p&gt;</code> e <code>&lt;em&gt;</code>.</div>
   @error('conteudo')
     <div class="invalid-feedback">{{ $message }}</div>
   @enderror

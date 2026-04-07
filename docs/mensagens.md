@@ -80,6 +80,12 @@ Parâmetros de filtro (query string):
 - `ativos`: quando `true`, retorna apenas mensagens ativas na data/hora atual.
 - `limite`: quantidade máxima de mensagens retornadas.
 
+Observação sobre `conteudo`:
+
+- o HTML é sanitizado no backend;
+- tags permitidas: `a`, `strong`, `br`, `p`, `em`;
+- em links (`a`), apenas `href` seguro é mantido.
+
 Exemplo de chamada:
 
 ```http

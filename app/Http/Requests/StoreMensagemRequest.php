@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Support\MensagemHtmlSanitizer;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreMensagemRequest extends FormRequest
@@ -33,6 +34,7 @@ class StoreMensagemRequest extends FormRequest
 
         $this->merge([
             'publico' => $publicoOpcao === 'sim',
+            'conteudo' => MensagemHtmlSanitizer::sanitize($this->input('conteudo')),
         ]);
     }
 }
