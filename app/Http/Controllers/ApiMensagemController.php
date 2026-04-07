@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mensagem;
+use App\Support\MensagemHtmlSanitizer;
 use Illuminate\Http\Request;
 
 class ApiMensagemController extends Controller
@@ -69,6 +70,12 @@ class ApiMensagemController extends Controller
                 'publico',
                 'updated_at',
             ]);
+
+        $mensagens->transform(function (Mensagem $mensagem) {
+            $mensagem->conteudo = MensagemHtmlSanitizer::sanitize($mensagem->conteudo);
+
+            return $mensagem;
+        });
 
         return response()->json($mensagens);
     }

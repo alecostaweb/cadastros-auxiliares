@@ -129,4 +129,37 @@ class ApiMensagensTest extends TestCase
         $response->assertOk();
         $response->assertJsonCount(1);
     }
+
+    public function test_sanitiza_conteudo_html_permitindo_somente_tags_da_whitelist(): void
+    {
+        Mensagem::factory()->create([
+            'ativo' => true,
+            'publico' => true,
+            'conteudo' => '<p><strong>Aviso</strong> <em>importante</em><br>'
+                . '<a href="javascript:alert(1)" onclick="alert(2)">link inseguro</a> '
+                . '<a href="https://example.com" style="color:red">link seguro</a>'
+                . '<script>alert(3)</script><span>texto span</span></p>',
+        ]);
+
+        $response = $this->getJson('/api/mensagens?ativos=true');
+
+        $response->assertOk();
+
+        $conteudo = $response->json('0.conteudo');
+
+        $this->assertIsString($conteudo);
+        $this->assertStringContainsString('<p>', $conteudo);
+        $this->assertStringContainsString('<strong>Aviso</strong>', $conteudo);
+        $this->assertStringContainsString('<em>importante</em>', $conteudo);
+        $this->assertStringContainsString('<br>', $conteudo);
+        $this->assertStringContainsString('<a>link inseguro</a>', $conteudo);
+        $this->assertStringContainsString(
+            '<a href="https://example.com" target="_blank" rel="noopener noreferrer">link seguro</a>',
+            $conteudo
+        );
+        $this->assertStringContainsString('texto span', $conteudo);
+        $this->assertStringNotContainsString('<script>', $conteudo);
+        $this->assertStringNotContainsString('javascript:', $conteudo);
+        $this->assertStringNotContainsString('onclick=', $conteudo);
+    }
 }
